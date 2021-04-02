@@ -31,18 +31,16 @@ export default function App() {
 
   const onSelectFile = (e) => {
     if (e.target.files.length > 0) {
-      for (let i = 0; i <= e.target.files.length - 1; i++) {
-        const fsize = e.target.files.item(i).size;
-        const file = Math.round(fsize / 1024);
-        // The size of the file.
-        if (file > 5120) {
-          alert("File too Big, please select a file less than 5mb or 5 mb");
-        } else {
-          if (e.target.files && e.target.files.length > 0) {
-            const reader = new FileReader();
-            reader.addEventListener("load", () => setUpImg(reader.result));
-            reader.readAsDataURL(e.target.files[0]);
-          }
+      const fsize = e.target.files.item(0).size;
+      const file = Math.round(fsize / 1024);
+      // The size of the file.
+      if (file > 5120) {
+        alert("File too Big, please select a file less than 5mb or 5 mb");
+      } else {
+        if (e.target.files && e.target.files.length > 0) {
+          const reader = new FileReader();
+          reader.addEventListener("load", () => setUpImg(reader.result));
+          reader.readAsDataURL(e.target.files[0]);
         }
       }
     }
