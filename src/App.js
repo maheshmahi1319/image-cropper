@@ -37,11 +37,9 @@ export default function App() {
       if (file > 5120) {
         alert("File too Big, please select a file less than 5mb or 5 mb");
       } else {
-        if (e.target.files && e.target.files.length > 0) {
-          const reader = new FileReader();
-          reader.addEventListener("load", () => setUpImg(reader.result));
-          reader.readAsDataURL(e.target.files[0]);
-        }
+        const reader = new FileReader();
+        reader.addEventListener("load", () => setUpImg(reader.result));
+        reader.readAsDataURL(e.target.files[0]);
       }
     }
   };
