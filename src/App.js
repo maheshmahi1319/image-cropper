@@ -10,7 +10,6 @@ function generateDownload(canvas, crop) {
   canvas.toBlob(
     (blob) => {
       const previewUrl = window.URL.createObjectURL(blob);
-
       const anchor = document.createElement("a");
       anchor.download = "cropPreview.png";
       anchor.href = URL.createObjectURL(blob);
@@ -91,7 +90,7 @@ export default function App() {
       <div>
         <input type="file" accept="image/*" onChange={onSelectFile} />
       </div>
-      <p id="size"></p>
+      <p id="size"> image size must be less than 5mb</p>
       <ReactCrop
         src={upImg}
         onImageLoaded={onLoad}
@@ -107,7 +106,6 @@ export default function App() {
             borderRadius: "50%",
             display: "block",
             backgroundPosition: "center",
-            backgroundSize: "auto 80px",
           }}
         />
       </div>
